@@ -16,12 +16,25 @@ exports.getAllTours = async (req, res) => {
     //   difficulty: 'easy'
     // });
     // const tours = await Tour.find().where('duration').equals(5).where('difficulty').equals('easy');
+
     //EXECUTE QUERY
+
+    //SORTING
     if (req.query.sort) {
       query = query.sort(req.query.sort);
     } else {
       query = query.sort('-createdAt');
     }
+
+    //PROJECTION
+    if(req.query.fields){
+      fields = req.query.fields.split(',').join(' ');
+      query = query.select(fields);
+    }
+    else{
+      query = query.select('-__v');
+    }
+
     const tours = await query;
     res.status(200).json({
       status: 'success',
@@ -31,8 +44,9 @@ exports.getAllTours = async (req, res) => {
       },
     });
   } catch (error) {
+    console.log(error);
     res.status(400).json({
-      status: 'filled',
+      status: 'failed',
       massage: error,
     });
   }
@@ -72,7 +86,7 @@ exports.getTour = async (req, res) => {
   }
 };
 /////
-///////////////hello
+////////////////////
 exports.UpdateTour = async (req, res) => {
   try {
     const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
