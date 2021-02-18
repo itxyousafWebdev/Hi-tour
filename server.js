@@ -6,7 +6,7 @@ mongodb://yousaf:j0bTAPsABtJVXKbu@cluster0-shard-00-00.zbwmj.mongodb.net:27017,c
 //mongodb+srv://yousaf:j0bTAPsABtJVXKbu@cluster0.zbwmj.mongodb.net/<dbname>?retryWrites=true&w=majority
 
 
-mongoose.connect("mongodb+srv://yousaf:j0bTAPsABtJVXKbu@cluster0.zbwmj.mongodb.net/<dbname>?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://yousaf:j0bTAPsABtJVXKbu@cluster0.zbwmj.mongodb.net/natour?retryWrites=true&w=majority", {
     useCreateIndex : true,
     useNewUrlParser : true,
     useFindAndModify : false,

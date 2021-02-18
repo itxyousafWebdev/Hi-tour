@@ -4,7 +4,7 @@ const Tour = require('./../../models/tourModel');
 
 mongoose
   .connect(
-    'mongodb+srv://yousaf:j0bTAPsABtJVXKbu@cluster0.zbwmj.mongodb.net/<dbname>?retryWrites=true&w=majority',
+    'mongodb+srv://yousaf:j0bTAPsABtJVXKbu@cluster0.zbwmj.mongodb.net/natour?retryWrites=true&w=majority',
     {
       useCreateIndex: true,
       useNewUrlParser: true,

@@ -21,9 +21,10 @@ exports.getAllTours = async (req, res) => {
 
     //SORTING
     if (req.query.sort) {
-      query = query.sort(req.query.sort);
+      const sort = req.query.sort.split(',').join(' ');
+      query = query.sort(sort);
     } else {
-      query = query.sort('-createdAt');
+      query = query.sort('price');
     }
 
     //PROJECTION
@@ -34,6 +35,21 @@ exports.getAllTours = async (req, res) => {
     else{
       query = query.select('-__v');
     }
+
+    //PAGENATION
+    const page = req.query.page * 1 || 1;
+    const limit = req.query.limit * 1|| 10;
+    const skip = (page - 1) * limit;
+
+    query = query.skip(skip).limit(limit);
+
+    if(req.query.page){
+      const totaltours = await Tour.countDocuments();
+      if(skip >= totaltours){
+        throw ('This page do not exists...');
+      } 
+    }
+
 
     const tours = await query;
     res.status(200).json({
