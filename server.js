@@ -13,7 +13,7 @@ mongoose.connect("mongodb+srv://yousaf:j0bTAPsABtJVXKbu@cluster0.zbwmj.mongodb.n
     useUnifiedTopology: true
 })
 .then(con => {
-    console.log("mangoose is connectted");
+    console.log("mangoose is connected");
 }).catch(err => {
     console.log(err);
 })
