@@ -71,6 +71,7 @@ exports.getTour = async (req, res) => {
     });
   }
 };
+/////
 
 exports.UpdateTour = async (req, res) => {
   try {
